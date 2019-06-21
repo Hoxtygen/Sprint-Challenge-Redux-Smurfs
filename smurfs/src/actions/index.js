@@ -90,7 +90,6 @@ export function deleteSmurf(id) {
 export const removeSmurf = (id) => dispatch => {
   axios.delete('http://localhost:3333/smurfs/' + id)
     .then(res => {
-      console.log(res)
       dispatch(fetchSmurfs());
     })
     .catch(error => {

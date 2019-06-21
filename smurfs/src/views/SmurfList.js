@@ -36,7 +36,7 @@ class SmurfList extends React.Component {
                     return <Smurf 
                     smurf={smurf} 
                     key = {smurf.id}
-                    removeSmurf = {removeSmurf}
+                    removeSmurf = {this.props.removeSmurf}
                      />
                 })
             }
@@ -65,6 +65,7 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {
-   fetchSmurfs
+   fetchSmurfs,
+   removeSmurf
   }
 )(SmurfList);
