@@ -4,7 +4,7 @@ import styled from "styled-components"
 //import Loaders from "react-loader-spinner";
 
 // import actions
-import { fetchSmurfs } from "../actions/index"
+import { fetchSmurfs, removeSmurf } from "../actions/index"
 import Smurf from "./Smurf"
 
 class SmurfList extends React.Component {
@@ -33,7 +33,11 @@ class SmurfList extends React.Component {
                 // this.props.fetching ?  <div>Loading....</div> :
 
                 smurfs.map(smurf => {
-                    return <Smurf smurf={smurf} key = {smurf.id} />
+                    return <Smurf 
+                    smurf={smurf} 
+                    key = {smurf.id}
+                    removeSmurf = {removeSmurf}
+                     />
                 })
             }
         </SmurfWrapper>

@@ -41,10 +41,9 @@ const smurfsReducer = (state = initialState, action) => {
         fetching: false
       }
     case (types.ADD_SMURF):
-      return
-      [...state, action.payload];
+      return [...state, action.payload];
     case (types.DELETE_SMURF):
-      return state.filter(quote => quote.id !== action.payload);
+      return state.filter(smurf => smurf.id !== action.payload);
 
     default:
       return state;

@@ -87,10 +87,10 @@ export function deleteSmurf(id) {
   };
 }
 
-export const removeQuote = (id) => dispatch => {
-  axios.delete('http://localhost:3333/smurfs' + id)
+export const removeSmurf = (id) => dispatch => {
+  axios.delete('http://localhost:3333/smurfs/' + id)
     .then(res => {
-       dispatch(deleteSmurf(res.data));
+      console.log(res)
       dispatch(fetchSmurfs());
     })
     .catch(error => {
