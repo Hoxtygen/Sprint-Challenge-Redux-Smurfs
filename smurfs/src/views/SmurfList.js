@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Loaders from "./Loader";
+//import Loaders from "react-loader-spinner";
 
 // import actions
 import { fetchSmurfs } from "../actions/index"
