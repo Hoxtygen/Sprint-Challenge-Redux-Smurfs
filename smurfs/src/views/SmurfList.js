@@ -13,7 +13,6 @@ class SmurfList extends React.Component {
   }
 
   render() {
-    console.log(this.props.smurfs)
     const smurfs = this.props.smurfs
     // if (this.props.fetching) {
     //   // return something here to indicate that you are fetching data
@@ -43,7 +42,6 @@ class SmurfList extends React.Component {
 
 
 function mapStateToProps(state) {
-    console.log(state)
   return {
     smurfs: state.smurfs,
     fetching:state.fetching,

@@ -1,53 +1,53 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import { connect } from "react-redux"
 //import styled from "styled-components";
+import { postNewSmurf } from "../actions/index"
+class SmurfForm extends React.Component {
+    nameRef = React.createRef();
+    ageRef = React.createRef();
+    heightRef = React.createRef()
+    onAdd = (e) => {
+        e.preventDefault()
+        this.props.postNewSmurf({
+            name: this.nameRef.current.value,
+            age: this.ageRef.current.value,
+            height: this.heightRef.current.value,
+        })
+        this.nameRef.current.value = "";
+        this.ageRef.current.value = "";
+        this.heightRef.current.value = "";
+    }
 
-const SmurfForm = (props) => {
-  //console.log(props);
-//   const handleAddSmurf = (e) => {
-//     e.preventDefault()
-//     axios.post("http://localhost:3333/smurfs/", {
-//       name: props.name,
-//       height: props.height,
-//       age: props.age
-//     })
-//     .then(res => {
-//       console.log(res);
-      
-//       this.props.history.push('/');
-//       props.fetchData();
-//     })
-//     .catch(err => console.log(err))
-// };
-  
-    return (
-      <div>
-        <h1>Add New Smurf</h1>
-        <form >
-          <input
-            // onChange={props.handleInputChange}
-            placeholder="name"
-            value={props.name}
-            name="name"
-          />
-          <input
-            // onChange={props.handleInputChange}
-            placeholder="age"
-            value={props.age}
-            name="age"
-          />
-          <input
-            // onChange={props.handleInputChange}
-            placeholder="height"
-            value={props.height}
-            name="height"
-          />
-          <button type="submit">Add to the village</button>
-        </form>
-      </div>
-    );
-  }
-
+    render() {
+        return (
+            <div>
+                <h1>Add New Smurf</h1>
+                <form >
+                    <input
+                        // onChange={props.handleInputChange}
+                        placeholder="name"
+                        ref={this.nameRef}
+                        name="name"
+                    />
+                    <input
+                        // onChange={props.handleInputChange}
+                        placeholder="age"
+                        ref={this.ageRef}
+                        name="age"
+                    />
+                    <input
+                        // onChange={props.handleInputChange}
+                        placeholder="height"
+                        ref={this.heightRef}
+                        name="height"
+                    />
+                    <button type="submit" onClick={this.onAdd}>Add to the village</button>
+                </form>
+            </div>
+        );
+    }
+}
 
 // const FormWrapper = styled.div `
 //   border: 1px solid red;
@@ -77,4 +77,5 @@ const SmurfForm = (props) => {
 //   }
 // `
 
-export default SmurfForm;
+
+export default connect(null, { postNewSmurf })(SmurfForm);

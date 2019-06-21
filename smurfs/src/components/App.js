@@ -16,8 +16,10 @@ class App extends Component {
       <Router>
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <Route exact path = "/" component = {SmurfList} />
-        <Route exact path = "/new-smurf" component = {SmurfForm} />
+        {/* <Route exact path = "/" component = {SmurfList} />
+        <Route exact path = "/new-smurf" component = {SmurfForm} /> */}
+        <SmurfList />
+        <SmurfForm />
       </div>
       </Router>
 

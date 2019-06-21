@@ -40,6 +40,10 @@ import * as types from "../actions/actionTypes";
             error: action.payload, 
             fetching: false
           }
+          case (types.ADD_SMURF):
+            return 
+              [...state, action.payload];
+      
     default:
       return state;
   }
