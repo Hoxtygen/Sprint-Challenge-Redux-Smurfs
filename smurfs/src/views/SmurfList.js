@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import styled from "styled-components"
 //import Loaders from "react-loader-spinner";
 
 // import actions
@@ -26,8 +27,8 @@ class SmurfList extends React.Component {
     // );
 
     return (
-        <div>
-            <h2>Hello smurflist</h2>
+        <SmurfWrapper>
+            <h1>Hello Smurflist</h1>
             {   
                 // this.props.fetching ?  <div>Loading....</div> :
 
@@ -35,10 +36,18 @@ class SmurfList extends React.Component {
                     return <Smurf smurf={smurf} key = {smurf.id} />
                 })
             }
-        </div>
+        </SmurfWrapper>
     )
   }
 }
+
+const SmurfWrapper = styled.div `
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
 
 
 function mapStateToProps(state) {

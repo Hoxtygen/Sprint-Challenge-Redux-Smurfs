@@ -70,7 +70,27 @@ export function increaseSmurf(name, age, height) {
 export const postNewSmurf = (smurf) => dispatch => {
   axios.post('http://localhost:3333/smurfs', smurf)
     .then(res => {
-      console.log(res)
+      dispatch(fetchSmurfs());
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+};
+
+
+//Delete smurf
+
+export function deleteSmurf(id) {
+  return {
+    type: types.DELETE_SMURF,
+    payload: id,
+  };
+}
+
+export const removeQuote = (id) => dispatch => {
+  axios.delete('http://localhost:3333/smurfs' + id)
+    .then(res => {
+       dispatch(deleteSmurf(res.data));
       dispatch(fetchSmurfs());
     })
     .catch(error => {

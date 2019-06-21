@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import axios from "axios"
 import { connect } from "react-redux"
-//import styled from "styled-components";
+import styled from "styled-components";
 import { postNewSmurf } from "../actions/index"
-class SmurfForm extends React.Component {
+class SmurfForm extends Component {
     nameRef = React.createRef();
     ageRef = React.createRef();
     heightRef = React.createRef()
@@ -21,61 +20,61 @@ class SmurfForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormWrapper>
                 <h1>Add New Smurf</h1>
                 <form >
                     <input
-                        // onChange={props.handleInputChange}
                         placeholder="name"
                         ref={this.nameRef}
                         name="name"
                     />
                     <input
-                        // onChange={props.handleInputChange}
                         placeholder="age"
                         ref={this.ageRef}
                         name="age"
                     />
                     <input
-                        // onChange={props.handleInputChange}
                         placeholder="height"
                         ref={this.heightRef}
                         name="height"
                     />
                     <button type="submit" onClick={this.onAdd}>Add to the village</button>
                 </form>
-            </div>
+            </FormWrapper>
         );
     }
 }
 
-// const FormWrapper = styled.div `
-//   border: 1px solid red;
-//   width: 40%;
-//   margin: 50px auto;
+const FormWrapper = styled.div `
+  width: 40%;
+  margin: 0 auto;
+
+  h1 {
+      text-align: center;
+  }
 
 
-//   form  {
-//     display: flex;
-//     flex-direction: column;
-//   }
-//   input {
-//     display: block;
-//     height: 40px;
-//     padding: 5px;
-//     margin-bottom: 10px;
-//     font-size: 1.2rem;
-//     outline: none;
-//   }
+  form  {
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    display: block;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    outline: none;
+  }
 
-//   button {
-//     margin-top: 10px;
-//     height: 35px;
-//     font-size: 1.2rem;
-//     background-color: #ccc;
-//     color: #222;
-//   }
-// `
+  button {
+    margin-top: 10px;
+    height: 35px;
+    font-size: 1.2rem;
+    background-color: #ccc;
+    color: #222;
+  }
+`
 
 
 export default connect(null, { postNewSmurf })(SmurfForm);

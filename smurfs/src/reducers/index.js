@@ -4,15 +4,15 @@
 import * as types from "../actions/actionTypes";
 
 
- //Your initial/default state for this project could *Although does not have to* look a lot like this
- const initialState  = {
-   smurfs: [],
-   fetching: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
-   error: null,
- }
+//Your initial/default state for this project could *Although does not have to* look a lot like this
+const initialState = {
+  smurfs: [],
+  fetching: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null,
+}
 
 
 /*
@@ -23,27 +23,29 @@ import * as types from "../actions/actionTypes";
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
- const smurfsReducer = (state = initialState, action) => {
+const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case (types.FETCH): 
-      return {...state, fetching: true};
-      case (types.SUCCESS):
-        return {
-          ...state, 
-          smurfs: action.payload,
-          fetching: false,
-          error: null
-        };
-        case (types.FAILURE):
-          return {
-            ...state, 
-            error: action.payload, 
-            fetching: false
-          }
-          case (types.ADD_SMURF):
-            return 
-              [...state, action.payload];
-      
+    case (types.FETCH):
+      return { ...state, fetching: true };
+    case (types.SUCCESS):
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetching: false,
+        error: null
+      };
+    case (types.FAILURE):
+      return {
+        ...state,
+        error: action.payload,
+        fetching: false
+      }
+    case (types.ADD_SMURF):
+      return
+      [...state, action.payload];
+    case (types.DELETE_SMURF):
+      return state.filter(quote => quote.id !== action.payload);
+
     default:
       return state;
   }

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import SmurfList from '../views/SmurfList';
 import SmurfForm from "../views/NewSmurf"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import styled from "styled-components";
 
 /*
  to wire this component up you're going to need a few things.
@@ -14,17 +15,20 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
+      <AppWrapper>
         {/* <Route exact path = "/" component = {SmurfList} />
         <Route exact path = "/new-smurf" component = {SmurfForm} /> */}
         <SmurfList />
         <SmurfForm />
-      </div>
+      </AppWrapper>
       </Router>
 
     );
   }
 }
+
+const AppWrapper = styled.div `
+  display: flex;
+`
 
 export default App;
