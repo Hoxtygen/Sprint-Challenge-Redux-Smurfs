@@ -2,6 +2,7 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+import axios from "axios"
 import * as types from "./actionTypes";
 
 /*
@@ -17,37 +18,35 @@ import * as types from "./actionTypes";
 
 export function addSmurfs(smurfs) {
   return {
-    type: SUCCESS,
+    type: types.SUCCESS,
     payload: smurfs,
   };
 }
 
 export function failure(error) {
     return {
-        type: FAILURE,
+        type: types.FAILURE,
         payload: error
     }
 }
 
 export function fetch(works) {
   return {
-      type: FETCH,
+      type: types.FETCH,
       payload: works
   }
 }
 
 export const fetchSmurfs = () => dispatch => {
-  dispatch(fetch(true));
-  //dispatch({type: FETCH})
-  // we code
+  dispatch(fetch(true))
   axios.get('http://localhost:3333/smurfs/')
     .then(res => {
         console.log(res.data)
-      dispatch(addSwapis(res.data.results)); // option 2
-      //dispatch(fetch(false));
+      dispatch(addSmurfs(res.data)); // option 2
+      dispatch(fetch(false));
     })
     .catch(error => {
-      //dispatch(fetch(false));
+      dispatch(fetch(false));
       dispatch(failure(error.message));
       console.log(error.message);
     });

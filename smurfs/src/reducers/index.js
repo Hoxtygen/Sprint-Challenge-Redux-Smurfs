@@ -23,10 +23,10 @@ import * as types from "../actions/actionTypes";
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export const smurfsReducer = (state = initialState, action) => {
+ const smurfsReducer = (state = initialState, action) => {
   switch (action.type) {
     case (types.FETCH): 
-      return {...state, fetching: action.payload};
+      return {...state, fetching: true};
       case (types.SUCCESS):
         return {
           ...state, 
@@ -44,3 +44,4 @@ export const smurfsReducer = (state = initialState, action) => {
       return state;
   }
 };
+export default smurfsReducer;
